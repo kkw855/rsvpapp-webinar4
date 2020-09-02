@@ -66,19 +66,19 @@ workflows:
   build-deploy:
     jobs:
       - test:
-          context: DOCKERHUB
+          context: dockerhub
           filters:
             branches:
               only: dev
       - build:
-          context: DOCKERHUB
+          context: dockerhub
           requires:
             - test
           filters:
             branches:
               only: dev
       - push:
-          context: DOCKERHUB
+          context: dockerhub
           requires:
             - build
           filters:
